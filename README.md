@@ -107,7 +107,8 @@ ollama pull qwen2.5:3b
 ```bash
 ollama list
 ```
-### 1. Install python (3.10+ Recommended)
+### 1. Install python (3.11.0 Recommended or 3.13.3)
+There is a problem with missing compiled wheel from rustup on python versino 3.12.x due to dependecies of `tokenizers` used by most opf llama requirements in this project. To avoid problems use recommeded python versions. If installing requirements take to much time considere switching python version (or unistalling and reinstalling correct ones).
 Windows:
 ```bash
 python --version
@@ -149,6 +150,5 @@ On Linux:
 ```bash
 python3 run_script.py
 ```
-
-## Note
-The run_script.py uses a personal logger created to showcase the benifits of a Singleton and a Modular reusable logger module. Enjoy it.
+## Notes
+- The run_script.py uses a personal logger created to showcase the benifits of a Singleton and a Modular reusable logger module. Enjoy it.
