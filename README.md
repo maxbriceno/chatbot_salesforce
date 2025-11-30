@@ -43,7 +43,7 @@ The system follows a **RAG pipeline**:
    - The chatbot exposes a **FastAPI** endpoint (`/ask`).
    - Optional interfaces: **Streamlit UI** or **CLI** for local interaction.
 
-## BE App Architecture
+## BE & App Architecture
 
 Used feature first architecture to refactor the FastAPI `app` into modules. All choices have been made by abstraction, separation of interest and dependecy injection means.
 
@@ -54,10 +54,12 @@ Used feature first architecture to refactor the FastAPI `app` into modules. All 
     |
     - \collection
     - \index
-    - llm
+    - \llm
     - query_engine
+  |  
   - \ingestion
   - \ui
+```
   
 
 
