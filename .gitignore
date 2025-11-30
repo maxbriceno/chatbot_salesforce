@@ -1,0 +1,12 @@
+# Virtualenv
+.venv/
+
+# Python cache
+__pycache__/
+
+# Chroma, storage
+chroma_db/
+storage/
+
+# Documents
+docs/
