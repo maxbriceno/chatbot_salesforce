@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import chromadb
-from llama_index.core import VectorStoreIndex, StorageContext
+from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.llms.ollama import Ollama
 from pydantic import BaseModel
@@ -8,36 +8,40 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 app = FastAPI()
 
-# Load Chroma index default path="./chroma"
 def get_chroma_collection():
     chroma_client = chromadb.PersistentClient()
     chroma_collection = chroma_client.get_collection("sf_docs")
     return chroma_collection
 
-vector_store = ChromaVectorStore(chroma_collection=get_chroma_collection())
-embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+def create_index():
+    vector_store = ChromaVectorStore(chroma_collection=get_chroma_collection())
+    embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
-storage_context = StorageContext.from_defaults(vector_store=vector_store)
-index = VectorStoreIndex.from_vector_store(
-    vector_store=vector_store,
-    embed_model=embed_model
-    )
+    index = VectorStoreIndex.from_vector_store(
+        vector_store=vector_store,
+        embed_model=embed_model
+        )
+    return index
 
 # LLM locale (Ollama)
-llm = Ollama(
-    model="qwen2.5:3b",
-    request_timeout=120,
-    keep_alive="10m"
-)
+def set_llm():
+        llm = Ollama(
+            model="qwen2.5:3b",
+            request_timeout=120,
+            keep_alive="10m"
+        )
+        return llm
 
-query_engine = index.as_query_engine(
-    llm=llm,
-    response_mode="compact")
+def get_query_engine():
+    query_engine = create_index().as_query_engine(
+        llm=set_llm(),
+        response_mode="compact")
+    return query_engine
 
 class Question(BaseModel):
     question: str
 
 @app.post("/ask")
 def ask(q: Question):
-    response = query_engine.query(q.question)
+    response = get_query_engine().query(q.question)
     return {"answer": str(response)}
