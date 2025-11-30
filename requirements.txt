@@ -1,0 +1,17 @@
+# 1 - LlmaIndex: Motore RAG
+llama-index
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+#2 -ChromaDB(Vector Store locale persistente senza cloud   )
+chromadb
+llama-index-vector-stores-chroma
+# 3 - Parser dependencies
+unstructured
+unstructured[pdf]
+# 4 - Fastapi dependencies
+fastapi[standard]
+uvicorn[standard]
+# 5 - 
+huggingface_hub[hf_xet]
+# 6 - Streamlit UI
+streamlit
