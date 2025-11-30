@@ -75,13 +75,46 @@ Used feature first architecture to refactor the FastAPI `app` into modules. All 
 | **Streamlit**    | Lightweight UI for testing & demo                    |
 
 ## Setup Instructions (Windows / Local)
-
-### 1. Install dependencies
-
+This setup and installation guide shoudl be independent of the specific OS (Linux, MacOS, etc.)
+### 1. Install python (3.10+ Recommended)
+Windows:
 ```bash
-pip install llama-index llama-index-embeddings-huggingface
-pip install chromadb llama-index-vector-stores-chroma
-pip install unstructured unstructured[pdf] pdfminer.six
-pip install fastapi uvicorn
-pip install streamlit  # optional for UI
+python --version
+```
+Linux:
+```bash
+python3 --version
+```
+If python is not installed, download it from official site:
+https://www.python.org/downloads/
+### 2. Create .venv
+From root directory `/chatbot_salesforce` create a venv:
+```bash
+py -m venv .venv
+```
+Move to the `.venv\Scripts` created directory and activate the virtual environment accordingly to your Host OS.
+On Windows:
+```bash
+cd .venv\Scripts
+Activate.ps1
+``` 
+On Linux:
+```bash
+cd .venv/Scripts
+activate
+```
+### 3. Install dependencies
+From the .venv move back to the project root directory and install project dependencies from requirements.txt file:
+```bash
+cd <your_path>\chatbot_salesforce
+pip install -r requirements.txt
+```
+### 4. Run run_script.py from root project dir
+On Windows:
+```bash
+py run_script.py
+```
+On Linux:
+```bash
+python3 run_script.py
 ```
