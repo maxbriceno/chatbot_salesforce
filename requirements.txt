@@ -2,6 +2,6 @@
 llama-index
 llama-index-llms-ollama
 llama-index-embeddings-huggingface
-#ChromeDB(Vector Store locale persistente senza cloud   )
-# chromadb
-# llama-index-vector-stores-chroma
+#2 -ChromaDB(Vector Store locale persistente senza cloud   )
+chromadb
+llama-index-vector-stores-chroma
