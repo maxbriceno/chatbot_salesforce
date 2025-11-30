@@ -19,7 +19,6 @@ The chatbot can answer questions about:
 - How can I extract the description of a category for a specific locale?
 - What are the differences between Primary Instance Group and Secondary Instance Group?
 
----
 
 ## Architecture
 
@@ -48,10 +47,6 @@ The system follows a **RAG pipeline**:
 ## Tech Stack
 
 
----
-
-## Tech Stack
-
 | Component       | Purpose |
 |-----------------|---------|
 | **Qwen-2.5:3B** | Local LLM for generating answers |
@@ -61,7 +56,6 @@ The system follows a **RAG pipeline**:
 | **FastAPI**     | Exposes `/ask` API endpoint for FE - BE interface |
 | **Streamlit** | Lightweight UI for testing & demo |
 
----
 
 ## Setup Instructions (Windows / Local)
 
