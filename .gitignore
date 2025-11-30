@@ -5,7 +5,7 @@
 __pycache__/
 
 # Chroma, storage
-chroma_db/
+chroma/
 storage/
 
 # Documents
