@@ -5,5 +5,13 @@ st.title("Salesforce RAG Chatbot (Locale)")
 q = st.text_input("Fai una domanda:")
 
 if st.button("Invia"):
-    r = requests.post("http://localhost:8000/ask", json={"question": q})
-    st.write(r.json()["answer"])
+    with st.spinner(""):
+        try:
+            response = requests.post("http://localhost:8000/ask", json={"question": q})
+            st.write(response.json()["answer"])
+            if response.status_code == 200:
+                st.success("")
+            else:
+                st.error("Qualcosa è andato storto. Si prega di riprovare...")
+        except Exception as e:
+            st.error(f"Errore nella richiesta: {e}")
