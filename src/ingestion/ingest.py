@@ -3,10 +3,15 @@ import chromadb
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+import os
 
 def build_index():
     #* 1 - Leggi cartella input docs
-    reader = SimpleDirectoryReader(input_dir="docs")
+    # cartella dove si trova il file corrente
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # percorso assoluto alla cartella docs
+    DOCS_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "docs"))
+    reader = SimpleDirectoryReader(input_dir=DOCS_DIR)
     documents = reader.load_data(show_progress=True, num_workers=1)
     #* 2 - Crea il client chroma - default to path="./chroma"
     chroma_client = chromadb.PersistentClient()
