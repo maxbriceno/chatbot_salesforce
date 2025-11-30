@@ -17,3 +17,5 @@ huggingface_hub[hf_xet]
 streamlit
 # 7 - Logger
 colorama
+# 8 - Run Script
+click
