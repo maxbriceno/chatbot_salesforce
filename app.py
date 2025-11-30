@@ -8,14 +8,16 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 app = FastAPI()
 
-
 # Load Chroma index default path="./chroma"
-chroma_client = chromadb.PersistentClient()
-chroma_collection = chroma_client.get_collection("sf_docs")
+def get_chroma_collection():
+    chroma_client = chromadb.PersistentClient()
+    chroma_collection = chroma_client.get_collection("sf_docs")
+    return chroma_collection
 
-vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
-storage_context = StorageContext.from_defaults(vector_store=vector_store)
+vector_store = ChromaVectorStore(chroma_collection=get_chroma_collection())
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+
+storage_context = StorageContext.from_defaults(vector_store=vector_store)
 index = VectorStoreIndex.from_vector_store(
     vector_store=vector_store,
     embed_model=embed_model
@@ -30,7 +32,7 @@ llm = Ollama(
 
 query_engine = index.as_query_engine(
     llm=llm,
-    reponse_mode= "compact")
+    response_mode="compact")
 
 class Question(BaseModel):
     question: str
