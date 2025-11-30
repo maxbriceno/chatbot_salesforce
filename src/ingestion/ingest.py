@@ -6,7 +6,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 def build_index():
     #* 1 - Leggi cartella input docs
-    reader = SimpleDirectoryReader(input_dir="docs")
+    reader = SimpleDirectoryReader(input_dir="../docs")
     documents = reader.load_data(show_progress=True, num_workers=1)
     #* 2 - Crea il client chroma - default to path="./chroma"
     chroma_client = chromadb.PersistentClient()
