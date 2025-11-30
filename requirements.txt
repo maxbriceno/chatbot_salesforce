@@ -15,3 +15,5 @@ uvicorn[standard]
 huggingface_hub[hf_xet]
 # 6 - Streamlit UI
 streamlit
+# 7 - Logger
+colorama
