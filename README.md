@@ -19,7 +19,7 @@ The chatbot can answer questions about:
 - How can I extract the description of a category for a specific locale?
 - What are the differences between Primary Instance Group and Secondary Instance Group?
 
-## Architecture
+## System Architecture
 
 The system follows a **RAG pipeline**:
 
@@ -42,6 +42,24 @@ The system follows a **RAG pipeline**:
 4. **Frontend / API**
    - The chatbot exposes a **FastAPI** endpoint (`/ask`).
    - Optional interfaces: **Streamlit UI** or **CLI** for local interaction.
+
+## BE App Architecture
+
+Used feature first architecture to refactor the FastAPI `app` into modules. All choices have been made by abstraction, separation of interest and dependecy injection means.
+
+```bash
+- \src 
+  |
+  - \app
+    |
+    - \collection
+    - \index
+    - llm
+    - query_engine
+  - \ingestion
+  - \ui
+  
+
 
 ## Tech Stack
 
