@@ -1,0 +1,7 @@
+# 1 - LlmaIndex: Motore RAG
+llama-index
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+#2 -ChromaDB(Vector Store locale persistente senza cloud   )
+chromadb
+llama-index-vector-stores-chroma
