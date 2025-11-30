@@ -118,3 +118,6 @@ On Linux:
 ```bash
 python3 run_script.py
 ```
+
+## Note
+The run_script.py uses a personal logger created to showcase the benifits of a Singleton and a Modular reusable logger module. Enjoy it.
