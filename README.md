@@ -109,6 +109,8 @@ ollama list
 ```
 ### 1. Install python (3.11.0 Recommended or 3.13.3)
 There is a problem with missing compiled wheel from rustup on python versino 3.12.x due to dependecies of `tokenizers` used by most opf llama requirements in this project. To avoid problems use recommeded python versions. If installing requirements take to much time considere switching python version (or unistalling and reinstalling correct ones).
+
+If installing dependencies from start, no problem should be encountered. I've provided a working_env_requirements.txt with freezed working dependencies in case your OS (i.e. Windows) doesn't find rustup wheels or manages to compile binaries for llama dependecies. This should work with any python version >= 3.10 but was correctly tested with version 3.11.0 stabler
 Windows:
 ```bash
 python --version
