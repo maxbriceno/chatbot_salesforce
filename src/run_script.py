@@ -16,7 +16,7 @@ has_to_create_index = click.prompt(
     )
 
 def run_and_wait(command):
-    logger.log(f"Running: {' '.join(command)}")
+    logger.log(f"Running: {' '.join(command)}", level=1)
     proc = subprocess.Popen(command)
     proc.wait()
     return proc
